@@ -58,12 +58,13 @@ class dnsapi(object):
 
 ### Code for Authentication #####
 fake_users_db = {
-    "johndoe": {
-        "username": "johndoe",
-        "full_name": "John Doe",
-        "email": "johndoe@example.com",
+    "svcacct": {
+        "username": "svcacct",
+        "full_name": "Service account",
+        "email": "svcacct@example.com",
         "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
-        "disabled": False,
+        # "hashed_password": "$2b$12$JRdJZwc565ZFSw3iVmNy.ehPgYj9aC.kSPr8ylWYisuXRg3vNmCHC",
+         "disabled": False,
     }
 }
 
@@ -96,8 +97,10 @@ def get_password_hash(password):
 
 
 def get_user(db, username: str):
+    print (db)
     if username in db:
         user_dict = db[username]
+        print (user_dict)
         return UserInDB(**user_dict)
 
 
